@@ -8,6 +8,7 @@ Run:
 
 ```
 ./gradlew compileKotlin2Js
+npm install
 open index.html
 ```
 
