@@ -1,17 +1,14 @@
-Kotlin JS Hello World Demo
-=======================
+Kotlin JS Fetch Demo
+====================
 
-Hello world from kotlin-js.
-
+Ajax request with `org.w3c.fetch` api.
 
 Run:
 
 ```
 ./gradlew compileKotlin2Js
 npm install
-open index.html
+npm install -g http-server
+http-server . -o
 ```
-
-You will see "Hello, Kotlin!" in console of your browser's developer panel.
-
 
