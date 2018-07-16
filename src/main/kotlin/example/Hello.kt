@@ -36,9 +36,10 @@ private fun postExample() {
 }
 
 private inline fun <T> JsObj(): T = js("{}") as T
+@Suppress("UNCHECKED_CAST_TO_EXTERNAL_INTERFACE")
 private inline fun JsObj(): JsObj = js("{}") as JsObj
 
-interface JsObj {
+external interface JsObj {
     operator fun get(key: String): dynamic
     operator fun set(s: String, value: dynamic)
 }
