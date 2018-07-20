@@ -1,30 +1,35 @@
 buildscript {
     ext.kotlin_version = '1.2.51'
     repositories {
-        mavenCentral()
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        jcenter()
         maven { url("https://plugins.gradle.org/m2/") }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'freewind.github.com:gradle-kotlin-js-bundler-plugin:0.1.0'
     }
 }
 
 apply plugin: 'kotlin2js'
+apply plugin: 'kotlin-js-bundler'
 
-compileKotlin2Js {
-    kotlinOptions.outputFile = "${projectDir}/generated/hello.js"
+kotlinJsBundler {
+    outputFile = "${projectDir}/server/public/bundle.js"
 }
 
 repositories {
     mavenLocal()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
     jcenter()
+    maven { url 'https://dl.bintray.com/freewind/maven/' }
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    compile 'freewind.github.com:kotlin-js-commons:0.6.0'
     testCompile "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version"
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = "4.8.1"
 }
